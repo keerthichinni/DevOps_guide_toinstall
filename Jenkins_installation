@@ -27,4 +27,10 @@ sudo systemctl start jenkins
 sudo systemctl enable jenkins
 -->status check
 sudo systemctl status jenkins
+-->take ip :8080 -it wont access as port is not setup in instance
+-->to do that -instance--security--security groups-edit-inbound rules-edit-custom tcp-define port 8080-set rules
+-->once done to access jenkins pwd , you need to copy the path showing and paste it using below command
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
+Useful links: https://pkg.jenkins.io/debian/
+https://chatgpt.com/g/g-p-68d80a055f948191baa7006a7528cdbc-keer/c/690ef201-087c-8321-bd60-1aab7cff4ed4
