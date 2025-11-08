@@ -1,0 +1,30 @@
+Before installing anything
+
+sudo apt update
+sudo apt install openjdk-17-jdk -y
+java --version
+--> as its ubuntu, as its a debian packager, you need to install few pluggins in pkg.jenkins.io , we need those packages to install jenkin servers inside ubuntu instances
+-->Ubuntu trusts Jenkins packages downloaded from pkg.jenkins.io
+-->Run the following commands to add the Jenkins official repository:
+
+curl -fsSL https://pkg.jenkins.io/debian/jenkins.io-2023.key | sudo tee \
+  /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+
+-->once above command runt, it will add a key 
+Then add the repository:
+
+echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+  https://pkg.jenkins.io/debian binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+
+sudo apt-get update
+  sudo apt-get install fontconfig openjdk-21-jre
+  sudo apt-get install jenkins
+
+-->Start and enable Jenkins service
+sudo systemctl start jenkins
+-->Enable it to start on boot:
+sudo systemctl enable jenkins
+-->status check
+sudo systemctl status jenkins
+
