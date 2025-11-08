@@ -1,0 +1,31 @@
+Terraform Installation Steps for Ubuntu 24.04 
+------------------------------------------------------------
+
+1️⃣ Update and install prerequisites
+------------------------------------
+sudo apt update && sudo apt install -y gnupg software-properties-common curl
+
+2️⃣ Add the HashiCorp GPG key
+-----------------------------
+curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+
+3️⃣ Add the HashiCorp repository
+--------------------------------
+echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+
+4️⃣ Update and install Terraform
+--------------------------------
+sudo apt update && sudo apt install -y terraform
+
+5️⃣ Verify the installation
+---------------------------
+terraform -version
+
+✅ Optional (Enable autocomplete)
+---------------------------------
+terraform -install-autocomplete
+
+Notes:
+------
+- This guide is for Ubuntu 24.04 (Noble Numbat).
+- Official documentation: https://developer.hashicorp.com/terraform/downloads
