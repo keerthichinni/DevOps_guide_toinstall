@@ -1,0 +1,82 @@
+Terraform Plugin Installation & Configuration in Jenkins (Ubuntu EC2)
+Prerequisites
+
+Jenkins is already installed and running on your Ubuntu EC2 instance.
+
+Terraform is installed on your system and works for the jenkins user.
+✅ Verified by:
+
+sudo -u jenkins terraform -version
+
+Step 1 — Download Terraform Plugin (.hpi) File
+
+Open your browser and visit:
+👉 https://plugins.jenkins.io/terraform/
+
+Scroll down and click on "Archives" or "Download".
+You’ll be redirected to a .hpi file (something like):
+
+https://updates.jenkins.io/download/plugins/terraform/<version>/terraform.hpi
+
+
+Download that .hpi file to your local system (e.g., Downloads folder).
+
+Example filename:
+
+terraform.hpi
+
+Step 2 — Upload Plugin to Jenkins
+
+Go to Jenkins dashboard:
+
+http://<your-ec2-public-ip>:8080
+
+
+Navigate to:
+
+Manage Jenkins → Plugins → Advanced
+
+
+Scroll down to “Upload Plugin” section.
+
+Click Choose File → Select the downloaded terraform.hpi file.
+
+Click Upload.
+
+Once uploaded, restart Jenkins from the UI or run:
+
+sudo systemctl restart jenkins
+
+Step 3 — Verify Plugin Installation
+
+After restart:
+
+Go to:
+
+Manage Jenkins → Plugins → Installed
+
+
+Search for “Terraform”.
+
+✅ You should see:
+
+Terraform Plugin (Installed)
+
+Step 4 — Configure Terraform Tool in Jenkins
+
+Go to:
+
+Manage Jenkins → Global Tool Configuration
+
+
+Scroll down — you should now see a Terraform section.
+
+Click “Add Terraform”, and enter:
+
+Name: Terraform
+
+Path to Terraform binary: /usr/bin/terraform
+
+Click Save.
+
+This tells Jenkins where to find Terraform on your system.
